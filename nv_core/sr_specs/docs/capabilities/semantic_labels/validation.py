@@ -20,7 +20,7 @@ import re
 from dataclasses import dataclass
 from functools import partial
 
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 import pxr
 from omni.asset_validator.core import (
     AtType,

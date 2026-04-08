@@ -18,7 +18,7 @@ from collections.abc import Generator, Iterator
 from dataclasses import dataclass, field
 
 import omni.asset_validator.core
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 from pxr import Gf, Usd, UsdGeom, Vt
 
 # Tolerance for transformation comparisons

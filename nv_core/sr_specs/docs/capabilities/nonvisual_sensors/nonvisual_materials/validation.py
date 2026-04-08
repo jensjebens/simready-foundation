@@ -18,7 +18,7 @@ __all__ = ["NonVisualMaterialsCapabilityChecker"]
 
 import dataclasses
 
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 from omni.asset_validator.core import (
     BaseRuleChecker,
     is_omni_path,

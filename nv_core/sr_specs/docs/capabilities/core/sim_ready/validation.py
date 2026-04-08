@@ -27,7 +27,7 @@ try:
 except ImportError:
     omni_client = None
 
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 from omni.asset_validator.core import BaseRuleChecker, register_requirements
 from pxr import Sdf, Usd
 

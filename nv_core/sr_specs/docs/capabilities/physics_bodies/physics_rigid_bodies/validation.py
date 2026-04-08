@@ -15,7 +15,7 @@
 from enum import Enum
 
 import omni.asset_validator.core
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 from pxr import Gf, PhysxSchema, Sdf, Usd, UsdGeom, UsdPhysics
 
 from ... import Requirement

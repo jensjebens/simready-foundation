@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import List, Optional
 
 import omni.asset_validator.core
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 from omni.asset_validator.core import BaseRuleChecker, register_requirements
 from pxr import Sdf, Sdr, Usd, UsdGeom, UsdShade
 

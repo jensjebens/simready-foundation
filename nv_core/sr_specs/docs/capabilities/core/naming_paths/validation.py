@@ -29,7 +29,7 @@ except ImportError:
     omni_client = None
 
 import omni.asset_validator.core
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 from pxr import Sdf, Usd
 
 # Global caches for path validation

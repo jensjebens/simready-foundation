@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import omni.asset_validator.core
-import omni.capabilities as cap
+import simready_validators.capabilities as cap
 from pxr import Sdf, Usd, UsdGeom, UsdShade
 
 
