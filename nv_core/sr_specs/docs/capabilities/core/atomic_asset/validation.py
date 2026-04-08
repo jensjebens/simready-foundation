@@ -19,7 +19,7 @@ import simready_validators.capabilities as cap
 from omni.asset_validator import (
     BaseRuleChecker,
     register_requirements,
-    registerRule,
+    register_rule as registerRule,
 )
 from pxr import Ar, Sdf, Usd, UsdGeom, UsdShade, UsdUtils
 

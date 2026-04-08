@@ -28,12 +28,12 @@ except ImportError:
     omni_client = None
 
 import simready_validators.capabilities as cap
-from omni.asset_validator import BaseRuleChecker, register_requirements
+from omni.asset_validator import BaseRuleChecker, register_requirements, register_rule as registerRule
 from pxr import Sdf, Usd
 
 
-@omni.asset_validator.registerRule("SimReady")
-@omni.asset_validator.register_requirements(cap.SimReadyRequirements.SR_001)
+@registerRule("SimReady")
+@register_requirements(cap.SimReadyRequirements.SR_001)
 class SimReadyCapabilityChecker(BaseRuleChecker):
     """Checker for Sim Ready capability requirements."""
 

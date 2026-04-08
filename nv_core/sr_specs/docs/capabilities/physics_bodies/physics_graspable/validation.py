@@ -14,7 +14,7 @@
 # limitations under the License.
 from enum import Enum
 
-import omni.asset_validator
+from omni.asset_validator import register_rule as registerRule, register_requirements, BaseRuleChecker
 from pxr import Usd, UsdPhysics, UsdShade
 
 from ... import Requirement
@@ -28,9 +28,9 @@ class PhysicsGraspableCapReqs(Requirement, Enum):
     )
 
 
-@omni.asset_validator.registerRule("PhysicsGraspable")
-@omni.asset_validator.register_requirements(PhysicsGraspableCapReqs.GSP_001, override=True)
-class GraspableVectorLineChecker(omni.asset_validator.BaseRuleChecker):
+@registerRule("PhysicsGraspable")
+@register_requirements(PhysicsGraspableCapReqs.GSP_001, override=True)
+class GraspableVectorLineChecker(BaseRuleChecker):
 
     GRASP_VECTOR_LINE_REQUIREMENT = PhysicsGraspableCapReqs.GSP_001
 

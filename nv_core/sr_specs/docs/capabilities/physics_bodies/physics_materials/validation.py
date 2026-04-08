@@ -14,7 +14,7 @@
 # limitations under the License.
 from enum import Enum
 
-import omni.asset_validator
+from omni.asset_validator import register_rule as registerRule, register_requirements, BaseRuleChecker
 from pxr import Usd, UsdPhysics, UsdShade
 
 from ... import Requirement
@@ -28,9 +28,9 @@ class PhysicsMaterialsCapReqs(Requirement, Enum):
     )
 
 
-@omni.asset_validator.registerRule("PhysicsMaterials")
-@omni.asset_validator.register_requirements(PhysicsMaterialsCapReqs.PMT_001, override=True)
-class PhysicsMaterialsCapabilityChecker(omni.asset_validator.BaseRuleChecker):
+@registerRule("PhysicsMaterials")
+@register_requirements(PhysicsMaterialsCapReqs.PMT_001, override=True)
+class PhysicsMaterialsCapabilityChecker(BaseRuleChecker):
     COLLISION_API_MATERIAL_BINDING_REQUIREMENT = PhysicsMaterialsCapReqs.PMT_001
 
     def CheckStage(self, stage: Usd.Stage) -> None:

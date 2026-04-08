@@ -15,7 +15,7 @@
 
 from enum import Enum
 
-import omni.asset_validator
+from omni.asset_validator import register_rule as registerRule, register_requirements, BaseRuleChecker
 from pxr import Usd, UsdShade
 
 from ... import Requirement
@@ -54,9 +54,9 @@ class RobotMaterialsCapReqs(Requirement, Enum):
     )
 
 
-@omni.asset_validator.registerRule("RobotMaterials")
-@omni.asset_validator.register_requirements(RobotMaterialsCapReqs.RM_001, override=True)
-class NoNestedMaterialsChecker(omni.asset_validator.BaseRuleChecker):
+@registerRule("RobotMaterials")
+@register_requirements(RobotMaterialsCapReqs.RM_001, override=True)
+class NoNestedMaterialsChecker(BaseRuleChecker):
     """Validates that materials don't contain nested materials.
 
     This rule checks that UsdShade.Material prims don't have child prims that are also
@@ -83,9 +83,9 @@ class NoNestedMaterialsChecker(omni.asset_validator.BaseRuleChecker):
                     )
 
 
-@omni.asset_validator.registerRule("RobotMaterials")
-@omni.asset_validator.register_requirements(RobotMaterialsCapReqs.RM_002, override=True)
-class MaterialsOnTopLevelOnlyChecker(omni.asset_validator.BaseRuleChecker):
+@registerRule("RobotMaterials")
+@register_requirements(RobotMaterialsCapReqs.RM_002, override=True)
+class MaterialsOnTopLevelOnlyChecker(BaseRuleChecker):
     """Validates that materials are only defined in the top-level Looks prim.
 
     This rule checks that all UsdShade.Material prims are direct children of the

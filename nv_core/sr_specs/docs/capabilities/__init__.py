@@ -42,7 +42,7 @@ from .core.sim_ready import validation
 from .core.units import validation
 
 # Import custom validation rules here, so they will be loaded and registered.
-from .example import example
+# from .example import example  # Skip example module
 from .hierarchy import validation
 from .isaac_sim.composition import validation
 from .isaac_sim.robot_core import validation

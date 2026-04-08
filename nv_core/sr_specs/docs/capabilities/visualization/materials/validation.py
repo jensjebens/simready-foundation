@@ -21,7 +21,7 @@ import os
 from pathlib import Path
 from typing import List, Optional
 
-import omni.asset_validator
+from omni.asset_validator import register_rule as registerRule, register_requirements, BaseRuleChecker
 import simready_validators.capabilities as cap
 from omni.asset_validator import BaseRuleChecker, register_requirements
 from pxr import Sdf, Sdr, Usd, UsdGeom, UsdShade

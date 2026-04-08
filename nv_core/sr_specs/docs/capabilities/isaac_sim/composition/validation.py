@@ -16,7 +16,7 @@ import os
 from enum import Enum
 from pathlib import Path
 
-import omni.asset_validator
+from omni.asset_validator import register_rule as registerRule, register_requirements, BaseRuleChecker
 from pxr import Kind, Usd, UsdGeom, UsdPhysics, UsdShade
 
 from ... import Requirement
@@ -30,9 +30,9 @@ class IsaacCompositionCapReqs(Requirement, Enum):
     )
 
 
-@omni.asset_validator.registerRule("IsaacComposition")
-@omni.asset_validator.register_requirements(IsaacCompositionCapReqs.ISA_001, override=True)
-class IsaacCompositionCapabilityChecker(omni.asset_validator.BaseRuleChecker):
+@registerRule("IsaacComposition")
+@register_requirements(IsaacCompositionCapReqs.ISA_001, override=True)
+class IsaacCompositionCapabilityChecker(BaseRuleChecker):
     ISAAC_COMPOSITION_REQUIREMENT = IsaacCompositionCapReqs.ISA_001
 
     def CheckStage(self, stage: Usd.Stage) -> None:

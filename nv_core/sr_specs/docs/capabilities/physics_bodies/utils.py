@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import omni.timeline
-from omni.asset_validator.core import BaseRuleChecker
+from omni.asset_validator import BaseRuleChecker
 from pxr import Sdf, Usd, UsdGeom, UsdPhysics, UsdUtils
 
 

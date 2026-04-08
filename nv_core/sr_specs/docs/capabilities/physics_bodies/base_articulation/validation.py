@@ -24,7 +24,7 @@ try:
     import carb
 except ImportError:
     carb = None
-import omni.asset_validator
+from omni.asset_validator import register_rule as registerRule, register_requirements, BaseRuleChecker
 try:
     import usdrt
 except ImportError:
@@ -187,9 +187,9 @@ def ComputeAdjacentMeshDict(stage: Usd.Stage) -> dict:
     return adjacent_mesh_matrix
 
 
-@omni.asset_validator.registerRule("BaseArticulation")
-@omni.asset_validator.register_requirements(BaseArticulationCapReq.BA_001, override=True)
-class HasArticulationRoot(omni.asset_validator.BaseRuleChecker):
+@registerRule("BaseArticulation")
+@register_requirements(BaseArticulationCapReq.BA_001, override=True)
+class HasArticulationRoot(BaseRuleChecker):
     """Validates that none or more than one prim in the stage has the ArticulationRootAPI.
 
     This rule checks that the USD stage contains none or more than one prim with the
@@ -222,9 +222,9 @@ class HasArticulationRoot(omni.asset_validator.BaseRuleChecker):
             )
 
 
-@omni.asset_validator.registerRule("BaseArticulation")
-@omni.asset_validator.register_requirements(BaseArticulationCapReq.BA_002, override=True)
-class NonAdjacentCollisionMeshesDoNotClash(omni.asset_validator.BaseRuleChecker):
+@registerRule("BaseArticulation")
+@register_requirements(BaseArticulationCapReq.BA_002, override=True)
+class NonAdjacentCollisionMeshesDoNotClash(BaseRuleChecker):
     """Validates that non-adjacent collision meshes don't intersect.
 
     This rule checks that collision meshes that aren't connected by joints don't
