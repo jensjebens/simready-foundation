@@ -28,7 +28,7 @@ try:
 except ImportError:
     omni_client = None
 
-import omni.asset_validator.core
+import omni.asset_validator
 import simready_validators.capabilities as cap
 from pxr import Sdf, Usd
 
@@ -121,9 +121,9 @@ def is_absolute_path(path: str) -> bool:
     return False
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_001, override=True)
-class PrimNamingConventionChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_001, override=True)
+class PrimNamingConventionChecker(omni.asset_validator.BaseRuleChecker):
     """Check NP.001: Prim naming convention compliance."""
 
     def CheckPrim(self, prim: Usd.Prim) -> None:
@@ -155,9 +155,9 @@ class PrimNamingConventionChecker(omni.asset_validator.core.BaseRuleChecker):
             )
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_002, override=True)
-class FileNamingConventionChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_002, override=True)
+class FileNamingConventionChecker(omni.asset_validator.BaseRuleChecker):
     """Check NP.002: File naming convention compliance."""
 
     def CheckStage(self, stage: Usd.Stage) -> None:
@@ -203,9 +203,9 @@ class FileNamingConventionChecker(omni.asset_validator.core.BaseRuleChecker):
             )
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_003, override=True)
-class DirectoryStructureChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_003, override=True)
+class DirectoryStructureChecker(omni.asset_validator.BaseRuleChecker):
     """Check NP.003: Directory structure compliance."""
 
     def CheckStage(self, stage: Usd.Stage) -> None:
@@ -236,9 +236,9 @@ class DirectoryStructureChecker(omni.asset_validator.core.BaseRuleChecker):
                     )
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_004, override=True)
-class PathLengthLimitsChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_004, override=True)
+class PathLengthLimitsChecker(omni.asset_validator.BaseRuleChecker):
     """Check NP.004: Path length limits compliance."""
 
     def CheckStage(self, stage: Usd.Stage) -> None:
@@ -267,9 +267,9 @@ class PathLengthLimitsChecker(omni.asset_validator.core.BaseRuleChecker):
             )
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_005, override=True)
-class AssetFolderStructureChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_005, override=True)
+class AssetFolderStructureChecker(omni.asset_validator.BaseRuleChecker):
     """Check NP.005: Asset folder structure compliance."""
 
     def CheckStage(self, stage: Usd.Stage) -> None:
@@ -319,9 +319,9 @@ class AssetFolderStructureChecker(omni.asset_validator.core.BaseRuleChecker):
             )
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_006, override=True)
-class MetadataLocationChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_006, override=True)
+class MetadataLocationChecker(omni.asset_validator.BaseRuleChecker):
     """Check NP.006: Metadata location compliance."""
 
     def CheckStage(self, stage: Usd.Stage) -> None:
@@ -378,9 +378,9 @@ class MetadataLocationChecker(omni.asset_validator.core.BaseRuleChecker):
             )
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_007, override=True)
-class RelativePathsChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_007, override=True)
+class RelativePathsChecker(omni.asset_validator.BaseRuleChecker):
     """Check NP.007: Relative paths compliance."""
 
     def CheckStage(self, stage: Usd.Stage) -> None:
@@ -440,9 +440,9 @@ class RelativePathsChecker(omni.asset_validator.core.BaseRuleChecker):
                         )
 
 
-@omni.asset_validator.core.registerRule("NamingPaths")
-@omni.asset_validator.core.register_requirements(cap.NamingPathsRequirements.NP_008, override=True)
-class PathsExistChecker(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("NamingPaths")
+@omni.asset_validator.register_requirements(cap.NamingPathsRequirements.NP_008, override=True)
+class PathsExistChecker(omni.asset_validator.BaseRuleChecker):
     """
     Check NP.008: Verify all asset, reference and payload paths resolve to files that exist.
 

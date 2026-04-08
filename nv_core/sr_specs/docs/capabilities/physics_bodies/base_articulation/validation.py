@@ -20,10 +20,21 @@ import typing
 # from omni.physx.bindings._physx import SETTING_UPDATE_TO_USD
 from enum import Enum
 
-import carb
-import omni.asset_validator.core
-import usdrt
-from pxr import PhysicsSchemaTools, PhysxSchema, Sdf, Usd, UsdPhysics, UsdUtils
+try:
+    import carb
+except ImportError:
+    carb = None
+import omni.asset_validator
+try:
+    import usdrt
+except ImportError:
+    usdrt = None
+from pxr import Sdf, Usd, UsdPhysics, UsdUtils
+try:
+    from pxr import PhysicsSchemaTools, PhysxSchema
+except ImportError:
+    PhysicsSchemaTools = None
+    PhysxSchema = None
 
 from ... import Requirement
 
@@ -176,9 +187,9 @@ def ComputeAdjacentMeshDict(stage: Usd.Stage) -> dict:
     return adjacent_mesh_matrix
 
 
-@omni.asset_validator.core.registerRule("BaseArticulation")
-@omni.asset_validator.core.register_requirements(BaseArticulationCapReq.BA_001, override=True)
-class HasArticulationRoot(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("BaseArticulation")
+@omni.asset_validator.register_requirements(BaseArticulationCapReq.BA_001, override=True)
+class HasArticulationRoot(omni.asset_validator.BaseRuleChecker):
     """Validates that none or more than one prim in the stage has the ArticulationRootAPI.
 
     This rule checks that the USD stage contains none or more than one prim with the
@@ -211,9 +222,9 @@ class HasArticulationRoot(omni.asset_validator.core.BaseRuleChecker):
             )
 
 
-@omni.asset_validator.core.registerRule("BaseArticulation")
-@omni.asset_validator.core.register_requirements(BaseArticulationCapReq.BA_002, override=True)
-class NonAdjacentCollisionMeshesDoNotClash(omni.asset_validator.core.BaseRuleChecker):
+@omni.asset_validator.registerRule("BaseArticulation")
+@omni.asset_validator.register_requirements(BaseArticulationCapReq.BA_002, override=True)
+class NonAdjacentCollisionMeshesDoNotClash(omni.asset_validator.BaseRuleChecker):
     """Validates that non-adjacent collision meshes don't intersect.
 
     This rule checks that collision meshes that aren't connected by joints don't

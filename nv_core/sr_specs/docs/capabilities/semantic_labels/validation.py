@@ -22,7 +22,7 @@ from functools import partial
 
 import simready_validators.capabilities as cap
 import pxr
-from omni.asset_validator.core import (
+from omni.asset_validator import (
     AtType,
     BaseRuleChecker,
     Issue,

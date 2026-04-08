@@ -16,7 +16,7 @@ import os
 from pathlib import Path
 
 import simready_validators.capabilities as cap
-from omni.asset_validator.core import (
+from omni.asset_validator import (
     BaseRuleChecker,
     register_requirements,
     registerRule,
