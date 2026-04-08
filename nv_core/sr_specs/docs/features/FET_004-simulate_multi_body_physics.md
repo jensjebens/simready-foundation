@@ -153,6 +153,22 @@ Source file type:
 </details>
 
 ## Robot PhysX Format (FET004_ROBOT_PHYSX)
+### Version 0.2.0
+<details>
+<summary><strong>Details</strong></summary>
+
+| **Property**            | **Value**         |
+|-------------------------|-------------------|
+| Internal ID             | `FET004_ROBOT_PHYSX`|
+
+#### Used in Profiles
+
+This version is used in the following profiles:
+
+- **Robot-Body-Runnable** (v1.0.0)
+- **Robot-Body-Isaac** (v1.0.0)
+
+</details>
 
 This variant is used in **Robot-Body** profiles (e.g. Robot-Body-Physx, Robot-Body-Runnable, Robot-Body-Isaac) for multi-body robot physics with PhysX. It uses the same multi-body and joint requirements as the base PhysX format, but with a different set of collision requirements.
 
