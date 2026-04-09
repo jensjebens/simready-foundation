@@ -37,24 +37,32 @@ class Requirement:
 
 
 from .core.atomic_asset import validation
-from .core.naming_paths import validation
-from .core.sim_ready import validation
-from .core.units import validation
+import logging as _logging
+_logger = _logging.getLogger(__name__)
 
-# Import custom validation rules here, so they will be loaded and registered.
-# from .example import example  # Skip example module
-from .hierarchy import validation
-from .isaac_sim.composition import validation
-from .isaac_sim.robot_core import validation
-from .isaac_sim.robot_materials import validation
-from .nonvisual_sensors.nonvisual_materials import validation
-from .physics_bodies.base_articulation import validation
-from .physics_bodies.physics_colliders import validation
-from .physics_bodies.physics_driven_joints import validation
-from .physics_bodies.physics_graspable import validation
-from .physics_bodies.physics_joints import validation
-from .physics_bodies.physics_materials import validation
-from .physics_bodies.physics_rigid_bodies import validation
-from .semantic_labels import validation
-from .visualization.geometry import validation
-from .visualization.materials import validation
+def _safe_import(module_path):
+    """Import a validation module, logging failures without stopping the chain."""
+    try:
+        __import__(module_path, fromlist=["validation"])
+    except Exception as e:
+        _logger.warning("Failed to load %s: %s", module_path, e)
+
+_safe_import("capabilities.core.atomic_asset.validation")
+_safe_import("capabilities.core.naming_paths.validation")
+_safe_import("capabilities.core.sim_ready.validation")
+_safe_import("capabilities.core.units.validation")
+_safe_import("capabilities.hierarchy.validation")
+_safe_import("capabilities.isaac_sim.composition.validation")
+_safe_import("capabilities.isaac_sim.robot_core.validation")
+_safe_import("capabilities.isaac_sim.robot_materials.validation")
+_safe_import("capabilities.nonvisual_sensors.nonvisual_materials.validation")
+_safe_import("capabilities.physics_bodies.base_articulation.validation")
+_safe_import("capabilities.physics_bodies.physics_colliders.validation")
+_safe_import("capabilities.physics_bodies.physics_driven_joints.validation")
+_safe_import("capabilities.physics_bodies.physics_graspable.validation")
+_safe_import("capabilities.physics_bodies.physics_joints.validation")
+_safe_import("capabilities.physics_bodies.physics_materials.validation")
+_safe_import("capabilities.physics_bodies.physics_rigid_bodies.validation")
+_safe_import("capabilities.semantic_labels.validation")
+_safe_import("capabilities.visualization.geometry.validation")
+_safe_import("capabilities.visualization.materials.validation")
